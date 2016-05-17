@@ -4,4 +4,4 @@
 ## About
 
 This is a simple 2D game I made using Unity.
-It is a Wave Survial game.
+It is a Wave Survival game.
