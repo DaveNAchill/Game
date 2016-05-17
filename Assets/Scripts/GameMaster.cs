@@ -6,32 +6,33 @@ public class GameMaster : MonoBehaviour
 
 	public static GameMaster gm;
 
-	void Start () {
+	void Start () 
+	{
 		if (gm == null) 
 		{
-			gm = GameObject.FindGameObjectWithTag ("GM").GetComponent<GameMaster>();
+			gm = GameObject.FindGameObjectWithTag ("GM").GetComponent<GameMaster>(); // tag the Gamemaster with GM
 		}
 	}
 
-	public Transform playerPrefab;
+	public Transform playerPrefab; 
 	public Transform spawnPoint;
 	public int spawnDelay = 2;
 	public Transform spawnPrefab;
 
-	public IEnumerator _RespawnPlayer () 
+	public IEnumerator _RespawnPlayer () // respawn 
 	{
-		Debug.Log("HERE2");
-		yield return new WaitForSeconds (spawnDelay);
+		//Debug.Log("HERE2");
+		yield return new WaitForSeconds (spawnDelay); // How many seconds to wait until respawn
 
-		Instantiate (playerPrefab, spawnPoint.position, spawnPoint.rotation);
+		Instantiate (playerPrefab, spawnPoint.position, spawnPoint.rotation);  
 		GameObject clone = Instantiate (spawnPrefab, spawnPoint.position, spawnPoint.rotation) as GameObject;
-		Destroy (clone, 2f);
+		Destroy (clone, 3f);
 	}
 
 	public static void KillPlayer (Player player)
 	{
-		Destroy (player.gameObject); // kill player
-		Debug.Log("HERE");
+		Destroy(player.gameObject); // kill player
+		//Debug.Log("HERE");
 		gm.StartCoroutine(gm._RespawnPlayer()); // respawn player
 	}
 	

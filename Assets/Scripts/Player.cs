@@ -5,11 +5,12 @@ public class Player : MonoBehaviour
 {
 
 	[System.Serializable]
-	public class PlayerStats 
+	public class PlayerStats // Stats for the player(Health)
 	{
-		public int maxHealth = 100;
+		public int maxHealth = 100; // player health = 100
 
 		private int _curHealth;
+
 		public int curHealth
 		{
 			get { return _curHealth; }
@@ -24,7 +25,7 @@ public class Player : MonoBehaviour
 
 	public PlayerStats stats = new PlayerStats();
 
-	public int fallBoundary = -20;
+	public int fallBoundary = -20; // How far the player can drop outside the map until he dies
 
 	
 
@@ -47,16 +48,16 @@ public class Player : MonoBehaviour
 
 	void Update () 
 	{
-		if (transform.position.y <= fallBoundary)
+		if (transform.position.y <= fallBoundary) // Damage when player falls outside the map
 			DamagePlayer (9999999);
 	}
 
 	public void DamagePlayer (int damage) 
 	{
 		stats.curHealth -= damage;
-		if (stats.curHealth <= 0)
+		if (stats.curHealth <= 0) // current health less than 0 
 		{
-			GameMaster.KillPlayer(this);
+			GameMaster.KillPlayer(this); // kill the palyer(from the game master script) 
 		}
 
 		statusIndicator.SetHealth(stats.curHealth, stats.maxHealth);

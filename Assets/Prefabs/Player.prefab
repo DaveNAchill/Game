@@ -348,7 +348,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stats:
     maxHealth: 100
-  fallBoundary: -20
+  fallBoundary: 10
   statusIndicator: {fileID: 11496234}
 --- !u!114 &11420172
 MonoBehaviour:
